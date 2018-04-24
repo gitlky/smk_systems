@@ -32,5 +32,7 @@ smk微信企业号系统迁移,要求laravel版本最低:5.3
    1. 根据自己项目引入一些其他的必须的扩展包，比如：
   
     composer require guzzlehttp/guzzle
-  
-   2. 
+  
+   2. 必须在app/Http/Kernel.php的$routeMiddleware数组中注册中间件，并且要在所有微信的路由中使用 
+    
+    'wxLogin'=> \App\Http\Middleware\WxLogin::class，
