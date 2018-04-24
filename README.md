@@ -12,11 +12,11 @@ smk微信企业号系统迁移,要求laravel版本最低:5.3
 
 **1.引入system包** 
 
-    composer require lky_vendor/smk_excel dev-master;
+    composer require smk_vendor/smk_systems dev-master;
 
 **2.在config/app.php的provider数组中添加:**
  
-    lky_vendor\smk_excel\excelServiceProvider::class,
+    smk_vendor\smk_package\smk_packageServiceProvider::class,
 
 **3.在config/app.php的aliases数组中添加:**
  
@@ -24,8 +24,8 @@ smk微信企业号系统迁移,要求laravel版本最低:5.3
  
 **4.执行以下命令配**
  
-    php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider";
-    php artisan excel:init
+    php artisan vendor:publish --provider="smk_vendor\smk_package\smk_packageServiceProvider";
+    php artisan wx:migrate
 
 **注意事项:**
    
