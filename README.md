@@ -36,3 +36,16 @@ smk微信企业号系统迁移,要求laravel版本最低:5.3
    2. 必须在app/Http/Kernel.php的$routeMiddleware数组中注册中间件，并且要在所有微信的路由中使用 
     
     'wxLogin'=> \App\Http\Middleware\WxLogin::class，
+    
+   3. 必须在app/Console/Kernel.php的schedule方法里面添加下面代码，并在服务器中配置定时脚本执行他
+     
+     try {
+        $schedule->call(function () {
+            $model = new Synchronize_mailList_with_MsgCtrl();
+            $model->get_msg_on_time();
+        })->everyMinute();
+     } catch (\Exception $e) {
+        Log::info('定时执行1错误');
+     }
+
+   4. 必须迁移Model下面对应的数据库
