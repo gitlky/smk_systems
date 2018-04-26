@@ -49,3 +49,5 @@ smk微信企业号系统迁移,要求laravel版本最低:5.3
      }
 
    4. 必须迁移Model下面对应的数据库
+   
+   5. config/qy_cfg.php的provider_id和url修改成自己项目对应的，中间件WxLogin中有调试信息，根据实际情况修改
