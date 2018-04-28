@@ -144,6 +144,7 @@ class Synchronize_mailList_with_MsgCtrl extends YuCtrl
                     $department_data = $this->department_model->updateOrCreate([
                         'pid' => $wx_pid,
                         'enterprise_id' => $corp_id,
+                        'wxid'=>$wx_id,
                     ],$insert_data);
                     $department_id = $department_data->id;
                     unset($wx_data[$k]);
