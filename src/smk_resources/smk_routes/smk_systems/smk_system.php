@@ -34,8 +34,22 @@ Route::group(['namespace' => 'smk_systems'], function (){
         Route::any('wxjs.js','YuWxCtrl@Wx')->name('wxjs');
     });
 
-    //支付
-    Route::group(['namespace' => 'Api\Pay'], function () {
-        Route::any('do_pay', 'YPay@index')->name('do_pay');
+    //Api
+    Route::group(['namespace' => 'Api'], function () {
+        //支付
+        Route::group(['namespace'=>'Pay'],function (){
+            Route::any('do_pay', 'YPay@index')->name('do_pay');
+        });
+        //事件
+        Route::group(['namespace'=>'Event'],function (){
+            Route::any('api/wx_event', 'System_for_WxCtrl@Wx_Event');
+        });
+    });
+
+    Route::group(['namespace' => 'Tool'], function (){
+        Route::post('upload_base_64_img', 'UploadCtrl@upload_base64')->name('smk_pub_upload_base64_img');
+        Route::post('upload_file', 'UploadCtrl@upload_file')->name('smk_pub_upload_file');
+        Route::get('yu/{i1}/{i2}/{i3}', 'UploadCtrl@get_storge');
+        Route::get('img', 'UploadCtrl@image');
     });
 });
